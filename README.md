@@ -33,16 +33,74 @@ By using three variable K-Map, we can get the simplified expression for next sta
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=JQ(t)′+K′Q(t)Q(t+1)=JQ(t)′+K′Q(t)
 
 **Procedure**
+1. Define Module: Define a Verilog module for the JK flip-flop with inputs (J, K, CLK) and outputs (Q, Q_bar).
 
-/* write all the steps invloved */
+2. Declare Inputs and Outputs: Declare input and output ports for the module.
+
+3. Implement Flip-Flop Logic: Write Verilog code to implement the JK flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4. Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the JK flip-flop under different input conditions.
+
+5. Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (J, K, CLK) to cover all possible input states.
+
+6. Verify Output Behavior: Verify that the output behavior of the JK flip-flop matches the expected behavior defined by its functional table.
+
+7. Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+Developed by:Purusothaman K
+RegisterNumber:212224110046
+```
+module JKFLIPFLOPUSINGIFELSE(q, qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+	 
+always @ (posedge (clock))
+
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end
+else 
+      begin
+        if (j==0 && k==0)
+		       begin
+			    q <= q;
+			    q <= qb;
+			    end	 
+        
+        else if (j!=k)
+             begin
+	          q <= j;
+	          qb <= k;
+	          end
+        else if (j==1 && k==1)
+             begin
+	          q <= ~q;
+	          qb <= ~qb;
+	          end
+	  
+      end
+ 
+end           
+endmodule
+
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
+![RTLT](https://github.com/Jegatheeswarir/JKFLIPFLOP-USING-IF-ELSE/assets/144871077/0148975f-35d7-4a68-9279-d4c249e1776c)
+
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![TIME](https://github.com/Jegatheeswarir/JKFLIPFLOP-USING-IF-ELSE/assets/144871077/2029f8f4-bc7e-45c1-a785-adddc7f3673f)
+
 
 **RESULTS**
+
+Therefore the code has been successfully executed.
+
