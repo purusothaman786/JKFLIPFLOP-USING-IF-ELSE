@@ -51,6 +51,8 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 **PROGRAM**
 
 Developed by:Purusothaman K
+
+
 RegisterNumber:212224110046
 ```
 module JKFLIPFLOPUSINGIFELSE(q, qb,j,k,clock,reset);
